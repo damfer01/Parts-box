@@ -1,24 +1,23 @@
 import Caixa from "./Models/Caixa";
 import Peca from "./Models/Peca";
-
 const mongoose = require('mongoose');
 const cors = require('cors');
-const usuarios = require('./Routes/usuariosRotas');
+
 const express = require('express');
 
 const app = express();
 const server = require('http').Server(app);
 
-// mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
 
-// mongoose.connection
-//     .once('open', () => console.log('ate agora deu certo !!!'))
-//     .on('error', (error) => {
-//         console.log('error:', error);
-//     });
+mongoose.connection
+    .once('open', () => console.log('ate agora deu certo !!!'))
+    .on('error', (error) => {
+        console.log('error:', error);
+    });
 
 
-app.use(usuarios)
+
 app.use(cors());
 app.use(express.json());
 
@@ -44,7 +43,7 @@ app.use('/', (req, res) => {
     caixa.deletePeca('correia')
 
     console.log('Caixa =>', caixa)
-    
+
     return res.json();
 });
 

@@ -1,0 +1,9 @@
+{
+    "type" : "postgres",
+    "host" : "localhost",
+    "port" : 3333,
+    "username": "postgres",
+    "password": "docker",
+    "database": "mongoose"
+
+}

@@ -1,6 +1,8 @@
+
 import Caixa from "./Models/Caixa";
 import Peca from "./Models/Peca";
-const mongoose = require('mongoose');
+import Cadastro  from "./Schema/UsuarioSchema";
+const router = require('./Routes/customer')
 const cors = require('cors');
 
 const express = require('express');
@@ -8,6 +10,17 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 
+
+//**TUDO SOBRE O  MONGO  */
+app.use(cors());
+app.use(express.json());
+
+
+
+
+import { MongoClient } from "mongodb";
+const mongoose = require('mongoose');
+const body = require('body-parser')
 mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
 
 mongoose.connection
@@ -16,35 +29,34 @@ mongoose.connection
         console.log('error:', error);
     });
 
+    async function start(){
+        try{
 
+            const app = express();
+            const server = require('http').Server(app);
 
-app.use(cors());
-app.use(express.json());
+            const mongo = await MongoClient.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
+            await mongo.connect();
 
-app.use('/', (req, res) => {
-    const caixa = new Caixa(
-        'MWM',
-        '3201',
-        [
-            new Peca('Cabeçote 1', '1234', '10x20x30'),
-            new Peca('Cabeçote 2', '1235', '10x20x30'),
-            new Peca('Cabeçote 3', '1236', '10x20x30'),
-        ],
-    );
+            app.db = mongo.db();
 
-    caixa.addPeca(new Peca('Correia', '3333', '10x0x10'));
+            //body parser 
 
-    console.log('CAIXA => ', caixa);
+            app.use(body.json({
+                lismit: '500kb'
+            }));
 
-    caixa.removePeca('122');
+            //Routes
+            app.use('/custumers', router);
 
-    console.log('CAIXA => ', caixa);
+            server.listen(3333 , ()=>{
+                console.log('O servidor está rodando na porta')
+            })
 
-    caixa.deletePeca('correia')
+        }catch(error){
+            console.log(error)
+        }
+      
+    }
+    start()
 
-    console.log('Caixa =>', caixa)
-
-    return res.json();
-});
-
-server.listen(3333);

@@ -1,6 +1,6 @@
 
 
-const routerCustomer = require('./Routes/customer')
+const routerCustomer = require('./Routes/usuarioRouter')
 const routerCadastroCaixa = require('./Routes/rotaCadastroCaixa')
 const cors = require('cors');
 

@@ -1,8 +1,7 @@
 
-import Caixa from "./Models/Caixa";
-import Peca from "./Models/Peca";
-import Cadastro  from "./Schema/UsuarioSchema";
-const router = require('./Routes/customer')
+
+const routerCustomer = require('./Routes/customer')
+const routerCadastroCaixa = require('./Routes/rotaCadastroCaixa')
 const cors = require('cors');
 
 const express = require('express');
@@ -29,34 +28,36 @@ mongoose.connection
         console.log('error:', error);
     });
 
-    async function start(){
-        try{
+async function start() {
+    try {
 
-            const app = express();
-            const server = require('http').Server(app);
+        const app = express();
+        const server = require('http').Server(app);
 
-            const mongo = await MongoClient.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
-            await mongo.connect();
+        const mongo = await MongoClient.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
+        await mongo.connect();
 
-            app.db = mongo.db();
+        app.db = mongo.db();
 
-            //body parser 
+        //body parser 
 
-            app.use(body.json({
-                lismit: '500kb'
-            }));
+        app.use(body.json({
+            lismit: '500kb'
+        }));
 
-            //Routes
-            app.use('/custumers', router);
+        //Routes
+        app.use('/cadastrousuario', routerCustomer);
+        app.use('/cadastroCaixa', routerCadastroCaixa)
 
-            server.listen(3333 , ()=>{
-                console.log('O servidor está rodando na porta')
-            })
-
-        }catch(error){
-            console.log(error)
-        }
-      
+        server.listen(3333, () => {
+            console.log('O servidor está rodando na porta')
+        })
+        
+    } catch (error) {
+        console.log(error)
     }
-    start()
+    
+   
+}
+start()
 

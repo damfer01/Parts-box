@@ -1,6 +1,10 @@
+
 import Peca from "./Peca";
 /**ATRIBUTOS */
-class Caixa {
+
+
+
+export class Caixa {
     constructor(
         marca,
         motor,
@@ -10,6 +14,8 @@ class Caixa {
         this.motor = motor;
         this.pecas = pecas;
     }
+
+    
 
     private marca: string = "";
     private motor: string = "";
@@ -50,6 +56,7 @@ class Caixa {
     deletePeca(nome:string){
      this.pecas =  this.pecas.filter((peca)=> peca.getNome === nome)
     }
+
+    
 }
 
-export default Caixa;

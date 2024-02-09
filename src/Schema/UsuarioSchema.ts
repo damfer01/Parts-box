@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema , model } from "mongoose";
 
 
 /**Documento intrerface */
@@ -18,4 +18,4 @@ const Cadastro = new Schema<UsuarioSchema>({
     senha:{ type: String , required: true}
 });
 
-export default Cadastro;
+export default   model('user' , Cadastro)

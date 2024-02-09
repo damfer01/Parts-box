@@ -1,12 +1,13 @@
-import { createCustumerController } from "../Controllers/createCutomerControllers";
-const {Router} = require('express')
-const express = require('express'); 
+import { usuarioController } from "../Controllers/usuarioControllers";
+const { Router } = require('express')
+const express = require('express');
 
 const router = express.Router();
 
-console.log('custuemer rotas')
+console.log('usuario rotas')
 
-router.get('/',createCustumerController)
+router.get('/', usuarioController);
 
 
-module.exports =  router ;
+
+module.exports = router;

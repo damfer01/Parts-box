@@ -1,7 +1,8 @@
 
 
-const routerCustomer = require('./Routes/usuarioRouter')
+
 const routerCadastroCaixa = require('./Routes/rotaCadastroCaixa')
+const usuarioRouter = require('./Routes/usuarioRouter')
 const cors = require('cors');
 
 const express = require('express');
@@ -20,7 +21,7 @@ app.use(express.json());
 import { MongoClient } from "mongodb";
 const mongoose = require('mongoose');
 const body = require('body-parser')
-mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/register_box?retryWrites=true&w=majority");
 
 mongoose.connection
     .once('open', () => console.log('ate agora deu certo !!!'))
@@ -34,20 +35,13 @@ async function start() {
         const app = express();
         const server = require('http').Server(app);
 
-        const mongo = await MongoClient.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
-        await mongo.connect();
-
-        app.db = mongo.db();
-
         //body parser 
 
-        app.use(body.json({
-            lismit: '500kb'
-        }));
+        app.use(body.json());
 
         //Routes
-        app.use('/cadastrousuario', routerCustomer);
-        app.use('/cadastroCaixa', routerCadastroCaixa)
+        app.use('/cadastroCaixa', routerCadastroCaixa);
+        app.use('/cadastrousuario', usuarioRouter)
 
         server.listen(3333, () => {
             console.log('O servidor está rodando na porta')

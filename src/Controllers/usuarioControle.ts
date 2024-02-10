@@ -1,23 +1,26 @@
-const UserService = require('../Controllers/usuarioControllers');
+
+
+const UserService = require('../Service/userService');
 
 module.exports  = {
     async create(req, res) {
         try {
             const {
                 cnpj,
+                empresa,
                 email,
                 senha,
             } = req.body;
 
-            const response = await UserService.create(cnpj, email, senha);
-
+            const response = await UserService.create(cnpj, empresa, senha ,email );
+                        
             return res.json(response);
         } catch (error) {
+
             console.log(error);
             return res.json({ success: false, message: 'failed to create user' })
         }
     },
-
     async index(req, res) {
         try {
             const response = await UserService.index();
@@ -54,16 +57,16 @@ module.exports  = {
 
             const {
                 cnpj,
-                username,
+                empresa,
                 senha,
             } = req.body;
 
-            const response = await UserService.update(id, cnpj, username );
+            const response = await UserService.update(id, cnpj, empresa );
 
             return res.json(response);
         } catch (error) {
             console.log(error);
-            return res.json({ success: false, message: 'failed to create user' })
+            return res.json({ success: false, message: 'não foi possível criar o usuário' })
         }
     },
 

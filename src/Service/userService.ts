@@ -9,8 +9,8 @@ module.exports = {
         await User.create({
             cnpj,
             empresa,
-            email,
-            senha: hash,
+            email: hash 
+            ,senha: hash,
         });
 
         return { success: true, message: 'sucesso' };

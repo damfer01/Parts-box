@@ -1,12 +1,19 @@
-import { controlesCadastroCaixa } from "../Controllers/controlesCadastroCaixa";
+const controlesCadastroCaixa = require("../Controllers/caixaController")
 const { Router  } = require('express')
-const express = require('express');
-const router = express.Router();
+const expresss = require('express');
 
-console.log(' Rota caixa criada')
+const routerr = expresss.Router();
 
-
-router.get('/', controlesCadastroCaixa);
+console.log(' Caixa em rotas!!!')
 
 
-module.exports = router;
+routerr.post('/', controlesCadastroCaixa.create);
+routerr.get('/:id' , controlesCadastroCaixa.index);
+routerr.get('/:id' , controlesCadastroCaixa.show);
+routerr.put('/:id' , controlesCadastroCaixa.update);
+routerr.delete('/:id' , controlesCadastroCaixa.delete)
+
+
+module.exports = routerr;
+
+export {};

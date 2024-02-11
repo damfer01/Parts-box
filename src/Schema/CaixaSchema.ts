@@ -1,22 +1,14 @@
-import { Schema } from "mongoose";
+import { Schema , model } from "mongoose";
 const caixa = require ("../Models/Caixa");
 
 
 /**Documento interface */
 
-interface  CaixaSchema{
-    dono: string,
-   marca : string,
-   motor : string,
-   nome: string,
-   codigo: string,
-   medida: string
-    data: string
-};
+
 
 /**Schema */
 
-const cadastroCaixa = new Schema<CaixaSchema>({
+const cadastroCaixa = new Schema({
     dono : {type:String , required: true},
     marca:{type:String , required: true},
     motor:{type: String , required: true},
@@ -26,4 +18,4 @@ const cadastroCaixa = new Schema<CaixaSchema>({
     data:{type:String , required:true}
 });
 
-export default cadastroCaixa ; 
+module.exports= model('cadastroCaixa',cadastroCaixa) ; 

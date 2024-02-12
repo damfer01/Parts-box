@@ -2,7 +2,9 @@
 
 const UserService = require('../Service/userService');
 
-module.exports  = {
+
+
+module.exports = {
     async create(req, res) {
         try {
             const {
@@ -10,10 +12,12 @@ module.exports  = {
                 empresa,
                 email,
                 senha,
+
             } = req.body;
 
-            const response = await UserService.create(cnpj, empresa, senha ,email );
-                        
+            const response = await UserService.create(cnpj, empresa, senha, email);
+             
+          
             return res.json(response);
         } catch (error) {
 
@@ -61,7 +65,7 @@ module.exports  = {
                 senha,
             } = req.body;
 
-            const response = await UserService.update(id, cnpj, empresa );
+            const response = await UserService.update(id, cnpj, empresa);
 
             return res.json(response);
         } catch (error) {
@@ -85,3 +89,4 @@ module.exports  = {
         }
     },
 };
+

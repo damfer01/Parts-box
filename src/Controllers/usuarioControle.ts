@@ -16,8 +16,8 @@ module.exports = {
             } = req.body;
 
             const response = await UserService.create(cnpj, empresa, senha, email);
-             
-          
+
+
             return res.json(response);
         } catch (error) {
 

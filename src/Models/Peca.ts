@@ -25,15 +25,15 @@ class Peca {
         return this.medida;
     }
     //* SET SEGUINIFICA MUDAR O VALOR *///
-    public set setNome(v : string) {
+    public set setNome(v: string) {
         this.nome = v;
     }
-    
-    public set setCodigo(v : string) {
+
+    public set setCodigo(v: string) {
         this.codigo = v;
     }
-    
-    public set setMedida(v : string) {
+
+    public set setMedida(v: string) {
         this.medida = v;
     }
 }

@@ -2,10 +2,9 @@ const bcrypt = require('bcrypt');
 
 const User = require('../Schema/UsuarioSchema');
 
-import { validate } from "../Validation/usuarioValidation";
 
 module.exports = {
-    
+
     async create(cnpj, empresa, senha, email) {
         const hash = await bcrypt.hash(senha, 10);
         await User.create({
@@ -39,10 +38,10 @@ module.exports = {
     },
 
     async update(id, cnpj, empresa,) {
-        await User.findByIdAndUpdate(id ,{
+        await User.findByIdAndUpdate(id, {
             cnpj,
             empresa,
- 
+
         });
 
         return { success: true, message: 'sucesso' };

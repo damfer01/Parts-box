@@ -1,8 +1,8 @@
-    // ****Controller de Caixa ***///
+// ****Controller de Caixa ***///
 
 const Service = require('../Service/caixaService');
 
-module.exports  = {
+module.exports = {
     async create(req, res) {
         try {
             const {
@@ -15,8 +15,8 @@ module.exports  = {
                 data
             } = req.body;
 
-            const response = await Service.create(dono, marca,motor , nome , codigo,medida, data );
-                        
+            const response = await Service.create(dono, marca, motor, nome, codigo, medida, data);
+
             return res.json(response);
         } catch (error) {
 
@@ -27,8 +27,8 @@ module.exports  = {
     async index(req, res) {
         try {
             const response = await Service.index();
-            
-            return res.json( response);
+
+            return res.json(response);
 
         } catch (error) {
             console.log(error);
@@ -43,7 +43,7 @@ module.exports  = {
                 id,
             } = req.params;
 
-            const response = await Service.show( id );
+            const response = await Service.show(id);
 
             return res.json(response);
         } catch (error) {
@@ -68,7 +68,7 @@ module.exports  = {
                 data,
             } = req.body;
 
-            const response = await Service.update(id, dono, marca ,motor , nome , codigo , medida ,data);
+            const response = await Service.update(id, dono, marca, motor, nome, codigo, medida, data);
 
             return res.json(response);
         } catch (error) {

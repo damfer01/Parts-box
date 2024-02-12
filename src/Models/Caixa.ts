@@ -15,7 +15,7 @@ export class Caixa {
         this.pecas = pecas;
     }
 
-    
+
 
     private marca: string = "";
     private motor: string = "";
@@ -33,16 +33,16 @@ export class Caixa {
     public get getPecas(): Array<Peca> {
         return this.pecas;
     }
-    
-    public set setMarca(v : string) {
+
+    public set setMarca(v: string) {
         this.marca = v;
     }
-    
-    public set setMotor(v : string) {
+
+    public set setMotor(v: string) {
         this.motor = v;
     }
-    
-    public set setPecas(v : Array<Peca>) {
+
+    public set setPecas(v: Array<Peca>) {
         this.pecas = v;
     }
     /**metados */
@@ -53,10 +53,10 @@ export class Caixa {
     removePeca(codigo: string) {
         this.pecas = this.pecas.filter((peca) => peca.getCodigo !== codigo);
     }
-    deletePeca(nome:string){
-     this.pecas =  this.pecas.filter((peca)=> peca.getNome === nome)
+    deletePeca(nome: string) {
+        this.pecas = this.pecas.filter((peca) => peca.getNome === nome)
     }
 
-    
+
 }
 

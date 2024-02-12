@@ -1,7 +1,9 @@
 
-const routerCadastroCaixa = require('./Routes/rotaCadastroCaixa')
+const routerCadastroCaixa = require('./Routes/routerCaixa')
 const usuarioRouter = require('./Routes/usuarioRouter')
 const cors = require('cors');
+
+const Cadastro = require('./Schema/UsuarioSchema')
 
 const express = require('express');
 
@@ -17,7 +19,7 @@ app.use(express.json());
 
 
 import { MongoClient } from "mongodb";
-import { validate } from "./Validation/usuarioValidation";
+
 const mongoose = require('mongoose');
 const body = require('body-parser')
 mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/register_box?retryWrites=true&w=majority");
@@ -39,8 +41,8 @@ async function start() {
         app.use(body.json());
 
         //Routes
-        app.use('/cadastroCaixa',validate({}) ,routerCadastroCaixa);
-        app.use('/cadastrousuario',validate({}), usuarioRouter)
+        app.use('/cadastroCaixa', routerCadastroCaixa);
+        app.use('/cadastrousuario', usuarioRouter)
 
         server.listen(3333, () => {
             console.log('O servidor está rodando na porta')

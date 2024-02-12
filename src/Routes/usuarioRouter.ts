@@ -1,14 +1,18 @@
-//import { usuarioController } from "../Controllers/usuarioControllers";
-const routerUsuario = require("../Controllers/usuarioControle");
+
+
 const {  Router} = require('express')
-const express = require('express');
+
+const router = Router();
+
+const routerUsuario = require("../Controllers/usuarioControle");
+const {validateMiddleware} =   require('../Validation/indexUsuario') ;
 
 
-const router = express.Router();
-
+const {loginValidator} = require("../Validation/loginValidation") ;
+  
 console.log('Usuario em rotas !!!')
 
-router.post('/', routerUsuario.create);
+router.post('/',loginValidator,validateMiddleware,routerUsuario.create);
 router.get('/:id' , routerUsuario.index);
 router.get('/:id' , routerUsuario.show);
 router.put('/:id' , routerUsuario.update);

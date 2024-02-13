@@ -18,7 +18,6 @@ app.use(express.json());
 
 
 
-import { MongoClient } from "mongodb";
 
 const mongoose = require('mongoose');
 const body = require('body-parser')
@@ -42,7 +41,7 @@ async function start() {
 
         //Routes
         app.use('/cadastroCaixa', routerCadastroCaixa);
-        app.use('/cadastrousuario', usuarioRouter)
+        app.use('/cadastrousuario' , usuarioRouter)
 
         server.listen(3333, () => {
             console.log('O servidor está rodando na porta')

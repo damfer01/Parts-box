@@ -1,13 +1,17 @@
-const routerCaixa = require("../Controllers/caixaController")
 const { Router  } = require('express')
-const expresss = require('express');
+const routerr = Router();
+const routerCaixa = require("../Controllers/caixaController")
 
-const routerr = expresss.Router();
+     //Validar o login
+import { storeCaixa } from "../Validation/indexCaixa";
+
+   //validar a caixa
+import { caixaValidation } from "../Validation/caixaValidation";
 
 console.log(' Caixa em rotas!!!')
 
+routerr.post('/',caixaValidation,storeCaixa, routerCaixa.create);
 
-routerr.post('/', routerCaixa.create);
 routerr.get('/:id' , routerCaixa.index);
 routerr.get('/:id' , routerCaixa.show);
 routerr.put('/:id' , routerCaixa.update);

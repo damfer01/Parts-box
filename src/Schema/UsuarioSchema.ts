@@ -1,5 +1,5 @@
 import { Schema , model } from "mongoose";
-import { NextFunction, Request, Response } from "express"
+
 
 /**Documento intrerface */
 
@@ -7,10 +7,10 @@ import { NextFunction, Request, Response } from "express"
 //**Schema */
 
 const  Cadastro = new Schema({
-    cnpj:{ type: Number, min:14},
-    email:{ type: String , required:true,},
-    senha:{ type: String ,min:8},
-    empresa:{type: String , required:true}
+    cnpj:{ type: Number, },
+    email:{ type: String , },
+    senha:{ type: String ,},
+    empresa:{type: String , }
    
 });
 

@@ -1,10 +1,9 @@
 
 const routerCadastroCaixa = require('./Routes/routerCaixa')
 const usuarioRouter = require('./Routes/usuarioRouter')
-const cors = require('cors');
-
 const Cadastro = require('./Schema/UsuarioSchema')
 
+const cors = require('cors');
 const express = require('express');
 
 const app = express();
@@ -28,18 +27,22 @@ mongoose.connection
     .on('error', (error) => {
         console.log('error:', error);
     });
-
+     
    
     //body parser 
 
     app.use(body.json());
 
-    //Routes
-    app
+    //ROTAS GERAL
+    
+    //ROTA PRINCIPAL DA CAIXA \\
     app.use('/cadastroCaixa', routerCadastroCaixa);
-    app.use('/cadastrousuario' , usuarioRouter)
+    //ROTA PRINCIPAL DO USUARIO
+    app.use('/cadastrousuario' , usuarioRouter);
 
+
+    // PORTA DE ENTRADA||SAIDA
     server.listen(3333, () => {
-        console.log('O servidor está rodando na porta')
-    })
+        console.log('O servidor está rodando na porta');
+    });
 

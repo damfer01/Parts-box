@@ -10,11 +10,11 @@ module.exports = {
             const {
                 cnpj,
                 empresa,
-                senha,
+                password,
 
             } = req.body;
 
-            const response = await UserService.create(cnpj, empresa, senha);
+            const response = await UserService.create(cnpj, empresa, password);
 
 
             return res.json(response);
@@ -61,7 +61,7 @@ module.exports = {
             const {
                 cnpj,
                 empresa,
-                senha,
+                password,
             } = req.body;
 
             const response = await UserService.update(id, cnpj, empresa);

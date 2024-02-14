@@ -6,11 +6,11 @@ const User = require('../Schema/UsuarioSchema');
 module.exports = {
 
     async create(cnpj, empresa, password) {
-        
+        const hash =  bcrypt.hash(password, 10)
         await User.create({
             cnpj,
             empresa,
-            password,
+            password: hash,
         });
 
         return { success: true, message: 'sucesso' };

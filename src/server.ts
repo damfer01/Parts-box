@@ -29,29 +29,17 @@ mongoose.connection
         console.log('error:', error);
     });
 
-async function start() {
-    try {
+   
+    //body parser 
 
-        const app = express();
-        const server = require('http').Server(app);
+    app.use(body.json());
 
-        //body parser 
+    //Routes
+    app
+    app.use('/cadastroCaixa', routerCadastroCaixa);
+    app.use('/cadastrousuario' , usuarioRouter)
 
-        app.use(body.json());
-
-        //Routes
-        app.use('/cadastroCaixa', routerCadastroCaixa);
-        app.use('/cadastrousuario' , usuarioRouter)
-
-        server.listen(3333, () => {
-            console.log('O servidor está rodando na porta')
-        })
-
-    } catch (error) {
-        console.log(error)
-    }
-
-
-}
-start()
+    server.listen(3333, () => {
+        console.log('O servidor está rodando na porta')
+    })
 

@@ -15,12 +15,11 @@ export const loginValidation = [
 
 
   //Validação  do Email
-  body('email').escape().not().isEmpty().isEmail().withMessage('Email invalido'),
+  //body('email').escape().not().isEmpty().isEmail().withMessage('Email invalido'),
 
-
-  body('senha').escape().not().isEmpty().withMessage('senha  obrigatorio'),
-  body('senha').isLength({
-    min: 10, max: 20
+  body('password').escape().not().isEmpty().withMessage('senha  obrigatorio'),
+  body('password').isLength({
+    min: 8, max: 20
   }).withMessage(' no minimo 8 digitos'),
 
 

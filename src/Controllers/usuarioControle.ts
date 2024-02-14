@@ -10,12 +10,11 @@ module.exports = {
             const {
                 cnpj,
                 empresa,
-                email,
                 senha,
 
             } = req.body;
 
-            const response = await UserService.create(cnpj, empresa, senha, email);
+            const response = await UserService.create(cnpj, empresa, senha);
 
 
             return res.json(response);

@@ -5,13 +5,12 @@ const User = require('../Schema/UsuarioSchema');
 
 module.exports = {
 
-    async create(cnpj, empresa, senha, email) {
-        const hash = await bcrypt.hash(senha, 10);
+    async create(cnpj, empresa, password) {
+        
         await User.create({
             cnpj,
             empresa,
-            email: hash,
-            senha: hash,
+            password,
         });
 
         return { success: true, message: 'sucesso' };

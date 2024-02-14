@@ -8,9 +8,9 @@ import { Schema , model } from "mongoose";
 
 const  Cadastro = new Schema({
     cnpj:{ type: Number, },
-    email:{ type: String , },
-    senha:{ type: String ,},
-    empresa:{type: String , }
+   // email:{ type: String , },
+   empresa:{type: String , },
+   senha:{ type: String ,},
    
 });
 

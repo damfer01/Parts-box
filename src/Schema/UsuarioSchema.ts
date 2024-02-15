@@ -7,10 +7,10 @@ import { Schema , model } from "mongoose";
 //**Schema */
 
 const  Cadastro = new Schema({
-    cnpj:{ type: Number, },
+    cnpj:{ type: Number },
    // email:{ type: String , },
-   empresa:{type: String , },
-   senha:{ type: String ,},
+   empresa:{type: String },
+   password:{ type: String },
    
 });
 

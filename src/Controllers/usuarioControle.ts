@@ -64,7 +64,7 @@ module.exports = {
                 password,
             } = req.body;
 
-            const response = await UserService.update(id, cnpj, empresa);
+            const response = await UserService.update(id, cnpj, empresa ,password);
 
             return res.json(response);
         } catch (error) {
@@ -88,4 +88,3 @@ module.exports = {
         }
     },
 };
-

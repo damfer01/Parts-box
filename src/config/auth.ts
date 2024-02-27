@@ -15,7 +15,7 @@ module.exports = {
 
       const parts = authHeader.split('');
 
-     //if( !parts.length === 2 ) return res.json({ success: false, message: 'token error'});
+       //if( !parts.length === 2 ) return res.json({ success: false, message: 'token error'});
 
       const [ scheme, token ] = parts;
 

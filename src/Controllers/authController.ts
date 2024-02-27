@@ -1,16 +1,15 @@
-const authService = require('../services/authService');
+const authService = require('../Service/authService');
 const UserService = require('../Service/userService');
 
 module.exports = {
   async create( req, res ) {
     try {
-      const {
-        name,
-        username,
+      const {cnpj,
+        empresa,
         password,
       } = req.body;
 
-      const response = await UserService.create(name, username, password);
+      const response = await UserService.create(cnpj ,empresa, password);
 
       return res.json(response);
     } catch (error) {
@@ -22,11 +21,11 @@ module.exports = {
   async login( req, res ) {
     try {
       const {
-        username,
+        empresa,
         password,
       } = req.body;
 
-      const response = await authService.create( username, password );
+      const response = await authService.create( empresa, password );
 
       return res.json( response );
     } catch ( err ) {

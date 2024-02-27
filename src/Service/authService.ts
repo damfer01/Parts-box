@@ -4,8 +4,8 @@ const User = require('../Schema/UsuarioSchema');
 const { generateToken } = require('../config/auth');
 
 module.exports = {
-  async create(username, password) {
-    const user = await User.findOne({ username }).select('+password');
+  async create(empresa, password) {
+    const user = await User.findOne({ empresa }).select('+password');
 
     if(!user) return { success: false, message: 'invalid credentials'};
 
@@ -19,7 +19,7 @@ module.exports = {
       success: true,
       message: 'login successfully',
       result: {
-        name: user.name,
+        empresa: user.empresa,
         token,
       },
     };

@@ -1,6 +1,5 @@
 
-const routerCadastroCaixa = require('./Routes/routerCaixa')
-const usuarioRouter = require('./Routes/usuarioRouter')
+const rotas = require('./Routes');
 const Cadastro = require('./Schema/UsuarioSchema')
 
 const cors = require('cors');
@@ -36,9 +35,9 @@ mongoose.connection
     //ROTAS GERAL
     
     //ROTA PRINCIPAL DA CAIXA \\
-    app.use('/cadastroCaixa', routerCadastroCaixa);
+    // app.use(routerCadastroCaixa);
     //ROTA PRINCIPAL DO USUARIO
-    app.use('/cadastrousuario' , usuarioRouter);
+    app.use(rotas);
 
 
     // PORTA DE ENTRADA||SAIDA

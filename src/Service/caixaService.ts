@@ -4,16 +4,14 @@ const Caixa = require('../Schema/CaixaSchema');
 
 module.exports = {
 
-    async create(dono, marca, motor, nome, codigo, medida, data) {
-        const hash = await Caixabcrypt.hash(data, 10);
+    async create(dono, marca, motor,data, pecas) {
+        
         await Caixa.create({
             dono,
             marca,
             motor,
-            nome,
-            codigo,
-            medida,
-            data: hash,
+            data,
+            pecas,
         });
 
         return { success: true, message: 'sucesso' };
@@ -42,15 +40,13 @@ module.exports = {
         };
     },
 
-    async update(id, dono, marca, motor, nome, codigo, medida, data) {
+    async update(id, dono, marca, motor, data,pecas) {
         await Caixa.findByIdAndUpdate(id, {
             dono,
             marca,
             motor,
-            nome,
-            codigo,
-            medida,
-            data
+            data,
+            pecas,
 
         });
 

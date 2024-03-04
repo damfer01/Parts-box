@@ -9,13 +9,12 @@ module.exports = {
                 dono,
                 marca,
                 motor,
-                nome,
-                codigo,
-                medida,
-                data
+                data,
+                pecas,
+                
             } = req.body;
 
-            const response = await Service.create(dono, marca, motor, nome, codigo, medida, data);
+            const response = await Service.create(dono, marca, motor, data, pecas,);
 
             return res.json(response);
         } catch (error) {

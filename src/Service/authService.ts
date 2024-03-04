@@ -17,7 +17,7 @@ module.exports = {
 
     return {
       success: true,
-      message: 'login successfully',
+      message: 'login efetivado com sucesso',
       result: {
         empresa: user.empresa,
         token,

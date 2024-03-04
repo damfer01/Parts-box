@@ -17,8 +17,8 @@ module.exports = {
         return { success: true, message: 'sucesso' };
     },
 
-    async index(id) {
-        const users = await Caixa.find(id);
+    async index() {
+        const users = await Caixa.find();
 
         return {
             success: true,

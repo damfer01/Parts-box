@@ -20,7 +20,7 @@ module.exports = {
         } catch (error) {
 
             console.log(error);
-            return res.json({ success: false, message: 'failed to create user' })
+            return res.json({ success: false, message: '[ERROR] ao criar caixa' })
         }
     },
     async index(req, res) {

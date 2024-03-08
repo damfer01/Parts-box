@@ -28,15 +28,11 @@ mongoose.connection
     });
      
    
-    //body parser 
+    
 
     app.use(body.json());
 
-    //ROTAS GERAL
     
-    //ROTA PRINCIPAL DA CAIXA \\
-    // app.use(routerCadastroCaixa);
-    //ROTA PRINCIPAL DO USUARIO
     app.use(rotas);
 
 

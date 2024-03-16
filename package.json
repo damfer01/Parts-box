@@ -7,6 +7,10 @@
     "build": "tsc --declaration",
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts"
   },
+  "engines": {
+    "node": "21.4.0",
+    "yarn": "1.22.19"
+  },
   "dependencies": {
     "@fastify/cors": "^9.0.1",
     "@types/cors": "^2.8.17",

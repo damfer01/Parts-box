@@ -12,6 +12,10 @@ const cadastroCaixa = new Schema({
     dono : {type:String , required: true},
     marca:{type:String , required: true},
     motor:{type: String , required: true},
+    usuarioId: {
+        type: Schema.Types.ObjectId,
+        ref: "user"
+    },
    // nome:{type: String , required:true},
    // codigo:{type:String , required:false},
     data:{

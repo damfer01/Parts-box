@@ -2,6 +2,8 @@ const { Router  } = require('express')
 const routerr = Router();
 const routerCaixa = require("../Controllers/caixaController")
 
+const {authenticate} = require("../config/auth")
+
      //Validar o login
 import { storeCaixa } from "../Validation/indexCaixa";
 
@@ -10,11 +12,11 @@ import { caixaValidation } from "../Validation/caixaValidation";
 
 console.log(' Caixa em rotas!!!')
 
-routerr.post('/',caixaValidation,storeCaixa, routerCaixa.create);
-routerr.get('/' , routerCaixa.index);
-routerr.get('/:id' , routerCaixa.show);
-routerr.put('/:id' , routerCaixa.update);
-routerr.delete('/:id' , routerCaixa.delete)
+routerr.post('/', authenticate,caixaValidation,storeCaixa, routerCaixa.create);
+routerr.get('/', authenticate, routerCaixa.index);
+routerr.get('/:id', authenticate, routerCaixa.show);
+routerr.put('/:id', authenticate, routerCaixa.update);
+routerr.delete('/:id', authenticate, routerCaixa.delete)
 
 
 module.exports = routerr;

@@ -4,6 +4,7 @@ const Service = require('../Service/caixaService');
 
 module.exports = {
     async create(req, res) {
+        const user_id = req.user_id;
         try {
             const {
                 dono,
@@ -14,7 +15,7 @@ module.exports = {
                 
             } = req.body;
 
-            const response = await Service.create(dono, marca, motor, data, pecas,);
+            const response = await Service.create(user_id, dono, marca, motor, data, pecas,);
 
             return res.json(response);
         } catch (error) {
@@ -24,8 +25,10 @@ module.exports = {
         }
     },
     async index(req, res) {
+        const user_id = req.user_id;
+
         try {
-            const response = await Service.index();
+            const response = await Service.index(user_id);
 
             return res.json(response);
 
@@ -37,12 +40,14 @@ module.exports = {
     },
 
     async show(req, res) {
+        const user_id = req.user_id;
+        
         try {
             const {
                 id,
             } = req.params;
 
-            const response = await Service.show(id);
+            const response = await Service.show(user_id,id);
 
             return res.json(response);
         } catch (error) {
@@ -52,6 +57,7 @@ module.exports = {
     },
 
     async update(req, res) {
+        const user_id = req.user_id;
         try {
             const {
                 id,
@@ -67,7 +73,7 @@ module.exports = {
                 data,
             } = req.body;
 
-            const response = await Service.update(id, dono, marca, motor, nome, codigo, medida, data);
+            const response = await Service.update(user_id, id, dono, marca, motor, nome, codigo, medida, data);
 
             return res.json(response);
         } catch (error) {
@@ -77,12 +83,13 @@ module.exports = {
     },
 
     async delete(req, res) {
+        const user_id = req.user_id;
         try {
             const {
                 id,
             } = req.params;
 
-            const response = await Service.delete(id);
+            const response = await Service.delete(user_id, id);
 
             return res.json(response);
         } catch (error) {

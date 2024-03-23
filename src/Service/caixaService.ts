@@ -4,7 +4,7 @@ const Caixa = require('../Schema/CaixaSchema');
 
 module.exports = {
 
-    async create(dono, marca, motor,data, pecas) {
+    async create(user_id, dono, marca, motor,data, pecas) {
         
         await Caixa.create({
             dono,
@@ -12,13 +12,14 @@ module.exports = {
             motor,
             data,
             pecas,
+            usuarioId: user_id,
         });
 
         return { success: true, message: 'sucesso' };
     },
 
-    async index() {
-        const users = await Caixa.find();
+    async index(user_id: string) {
+        const users = await Caixa.find({usuarioId: user_id});
 
         return {
             success: true,
@@ -30,8 +31,8 @@ module.exports = {
 
     },
 
-    async show(id) {
-        const user = await Caixa.findById(id);
+    async show(user_id, id) {
+        const user = await Caixa.find({_id: id, usuarioId: user_id});
 
         return {
             success: true,
@@ -40,14 +41,13 @@ module.exports = {
         };
     },
 
-    async update(id, dono, marca, motor, data,pecas) {
-        await Caixa.findByIdAndUpdate(id, {
+    async update(user_id, id, dono, marca, motor, data,pecas) {
+        await Caixa.findOneAndUpdate({_id: id, usuarioId: user_id}, {
             dono,
             marca,
             motor,
             data,
             pecas,
-
         });
 
         return { success: true, message: 'sucesso' };
@@ -55,9 +55,9 @@ module.exports = {
 
     },
 
-    async delete(id) {
+    async delete(user_id, id) {
         console.log(id)
-        await Caixa.findByIdAndDelete(id);
+        await Caixa.findOneAndDelete({_id: id, usuarioId: user_id});
 
         return {
             success: true,

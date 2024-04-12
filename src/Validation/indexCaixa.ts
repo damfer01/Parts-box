@@ -10,7 +10,6 @@ export const storeCaixa = async function (request:Request, response:Response, ne
         }next()
      }catch(error){
         console.log(error)
-     }
+     };
 
-     console.log(storeCaixa)
 }

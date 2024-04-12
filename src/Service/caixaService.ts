@@ -27,8 +27,6 @@ module.exports = {
             result: users,
 
         };
-
-
     },
 
     async show(user_id, id) {
@@ -51,8 +49,6 @@ module.exports = {
         });
 
         return { success: true, message: 'sucesso' };
-
-
     },
 
     async delete(user_id, id) {
@@ -64,6 +60,4 @@ module.exports = {
             message: ' deleted'
         }
     },
-
-
 };

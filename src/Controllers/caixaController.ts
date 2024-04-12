@@ -1,4 +1,3 @@
-// ****Controller de Caixa ***///
 
 const Service = require('../Service/caixaService');
 

@@ -22,8 +22,7 @@ module.exports = {
             success: true,
             message: 'user successfully created',
             result,
-          };
-       
+          };    
     },
 
     async index() {
@@ -50,12 +49,9 @@ module.exports = {
         await User.findByIdAndUpdate(id, {
             cnpj,
             empresa,
-
         });
 
         return { success: true, message: 'sucesso' };
-
-
     },
 
     async delete(id) {

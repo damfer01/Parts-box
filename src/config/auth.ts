@@ -11,7 +11,7 @@ module.exports = {
     try {
       const authHeader = req.headers.authorization;
 
-      if( !authHeader ) return res.status(401).json({ success: false, message: 'no tokens reported'});
+      if( !authHeader ) return res.status(401).json({ success: false, message: ' nenhum token relatado'});
 
       const parts = authHeader.split(' ');
 
@@ -19,10 +19,10 @@ module.exports = {
 
       const [ scheme, token ] = parts;
 
-      if( !/^Bearer$/i.test( scheme )) return res.json({ success: false, message: 'token format is invalid'});
+      if( !/^Bearer$/i.test( scheme )) return res.json({ success: false, message: 'o formato do token é inválido'});
 
       jwt.verify( token, '1a45818e77bc815a455f3737992d37bb', ( error, decoded ) => {
-        if( error ) return res.json({ success: false, message: 'invalid token'});
+        if( error ) return res.json({ success: false, message: 'token inválido'});
 
         req.user_id = decoded.id;
 

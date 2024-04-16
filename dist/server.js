@@ -1,23 +1,24 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
-const cors = require("cors");
-const routes_1 = require("./Routes/routes");
-const PlanilhaRoutes_1 = require("./Routes/PlanilhaRoutes");
-const routesPlanilhaAuths_1 = require("./Routes/routesPlanilhaAuths");
-const express = require("express");
+const rotas = require('./Routes');
+const Cadastro = require('./Schema/UsuarioSchema');
+const cors = require('cors');
+const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-mongoose_1.default.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/?retryWrites=true&w=majority");
-mongoose_1.default.connection
+//**TUDO SOBRE O  MONGO  */
+app.use(cors());
+app.use(express.json());
+const mongoose = require('mongoose');
+const body = require('body-parser');
+mongoose.connect("mongodb+srv://kaua:283186@cluster0.9m3dc2c.mongodb.net/register_box?retryWrites=true&w=majority");
+mongoose.connection
     .once('open', () => console.log('ate agora deu certo !!!'))
     .on('error', (error) => {
     console.log('error:', error);
 });
-app.use(cors());
-app.use(routes_1.routes);
-app.use(express.json());
-app.use(routesPlanilhaAuths_1.default);
-server.listen(3333);
-console.log(new PlanilhaRoutes_1.PlanilhaEstoque());
+app.use(body.json());
+app.use(rotas);
+// PORTA DE ENTRADA||SAIDA
+server.listen(process.env.PORT || 3333, () => {
+    console.log('O servidor está rodando na porta');
+});
 //# sourceMappingURL=server.js.map
